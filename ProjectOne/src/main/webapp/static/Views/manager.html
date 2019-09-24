@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Frederico Global</title>
+    <link rel="stylesheet" type="text/css" href="static/CSS/myCss.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+	<script src="static/Scripts/checkToken.js"></script>
+	<script src="static/Scripts/checkIfManager.js"></script>
+</head>
+
+<body>
+
+    <div class="header">
+        <!-- 	glyphicon glyphicon-eye-open -->
+
+        <a id="toggle-view-btn" href="employee" class="btn btn-default btn-sm float-right">Manager View</a>
+        
+        <img class="container-fluid" height="auto" width="auto" src="static/Images/p1logo.png">
+ 
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <!-- might want to define an inbetween med for col-md-4 -->
+                <a class="nav-item nav-link active col-xs-12 col-md-3" id="nav-submitReim-tab" data-toggle="tab"
+                    href="#nav-submitReim" role="tab" aria-controls="nav-submitReim" aria-selected="true">View
+                    Reimbursements</a>
+                <a class="nav-item nav-link col-xs-12 col-md-3" id="nav-viewReim-tab" data-toggle="tab"
+                    href="#nav-viewReim" role="tab" aria-controls="nav-viewReim" aria-selected="false">View Employees</a>
+                <a class="nav-item nav-link col-xs-12 col-md-3" id="nav-myProfile-tab" data-toggle="tab"
+                    href="#nav-myProfile" role="tab" aria-controls="nav-myProfile" aria-selected="false">Add New Employee</a>
+                <a class="nav-item nav-link col-xs-12 col-md-3" id="nav-signOut-tab" data-toggle="tab"
+                    href="#nav-signOut" role="tab" aria-controls="nav-signOut" aria-selected="false">Sign Out</a>
+
+            </div>
+        </nav>
+    </div>
+
+    <div class="jumbotron">
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-submitReim" role="tabpanel"
+                aria-labelledby="nav-submitReim-tab">
+                <h3>View Previous Reimbursement Submissions</h3>
+                <hr>
+                <div class="table-responsive">
+                <table id="table-list-of-manager-dept-reimbursements" class="table table-sm display">
+                    <thead>
+                        <tr>
+                            <th>Reim_Id</th>
+                            <th>Submitted</th>
+                            <th>Employee</th>
+                            <th>Expense</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Update</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                      
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-viewReim" role="tabpanel" aria-labelledby="nav-viewReim-tab">
+                    <h3>View All Of Your Employees</h3>
+                    <hr>
+                <div class="table-responsive">
+                <table id="table-list-of-employees" class="table table-sm display">
+                    <thead>
+                        <tr>
+                            <th>Empl_Id</th>
+                            <th>Employee</th>
+                          
+                            <th>Title</th>
+                              <th>Department</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+   
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            <!-- 	glyphicon glyphicon-user -->
+            <div class="tab-pane fade" id="nav-myProfile" role="tabpanel" aria-labelledby="nav-myProfile-tab"> <div class="container">
+                    
+                   
+                    <h3>Add New Employee</h3>
+                    <hr>
+                    <form action="reimburesments" method="POST">
+                        <label>First Name:</label><br>
+                        <input type="text" name="firstname" class="form-control" />
+                        <br>
+                        <label>Last Name:</label><br>
+                        <input type="text" name="lastname" class="form-control" />
+                        <br>
+                        <label>Username:</label><br>
+                        <input type="text" name="username" class="form-control" placeholder="must be unique in db">
+                        <br>
+                        <label>Email:</label><br>
+                        <input type="text" name="email" class="form-control" placeholder="must be unique in db">
+                        <br>
+                        <label>Department:</label>
+                        
+                        <input id="reim-form-department" type="text" name="department" class="form-control disabled-input" disabled>
+                        
+                        <br>
+                        <label>Job Title:</label><br>
+                        <input type="text" name="jobtitle" class="form-control">
+                        <br>
+                        <input type="submit" value="Submit" class="btn btn-primary float-right">
+                        <br>
+             
+                    </form>
+                </div></div>
+            <div class="tab-pane fade" id="nav-signOut" role="tabpanel" aria-labelledby="nav-signOut-tab">Please proceed to log out.<input type="button" id="logout-btn" value="Log Out" class="btn float-right"><br></div>
+        </div>
+    </div>
+    <div class="footer">
+        <hr />
+       Here lies my project one full stack application.
+        If you are reading this I must of survived this project.
+        Also, its almost my birthday. Carolyn is a great teacher. Howard is the man. I dont know if you realize this but
+        this entire footer is just bull crap to make my page look better than it really is. Have a problem? Well its not our fault.
+        Try refreshing the page, clearing your cache, restarting your computer, flash your PRAM. Just remember its your fault not ours.<span>&#9774;</span>
+        <div style="text-align:right">Copyright © Frederick Glaeser IV. 09/22/93</div>
+    </div>
+   <script src="static/Scripts/populateManReimTableSortByDepartment.js"></script>
+  <!--   <script src="static/Scripts/populateManagersEmployeeTable.js"></script>  
+	<script src="static/Scripts/autopopulateManagerPageDepartmentField.js"></script> -->
+   <script src="static/Scripts/logout.js"></script>
+</body>
+
+</html>

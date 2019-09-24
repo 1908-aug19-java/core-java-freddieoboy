@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Frederico Global</title>
+    <link rel="stylesheet" type="text/css" href="static/CSS/myCss.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <!-- JQUERY https://datatables.net/manual/installation 
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css">
+    <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+    -->
+       <script src="static/Scripts/checkToken.js"></script>
+</head>
+
+<body>
+
+    <div class="header">
+        <!-- 	glyphicon glyphicon-eye-open -->
+
+        <a id="toggle-view-btn" href="manager" class="btn btn-default btn-sm float-right" hidden>Employee View</a>
+        
+        <script src="static/Scripts/toggleManagerBtn.js"></script>
+
+        <img class="container-fluid" height="auto" width="auto" src="static/Images/p1logo.png">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <!-- might want to define an inbetween med for col-md-4 -->
+                <a class="nav-item nav-link active col-xs-12 col-md-3" id="nav-submitReim-tab" data-toggle="tab"
+                    href="#nav-submitReim" role="tab" aria-controls="nav-submitReim" aria-selected="true">Submit
+                    Reimbursement</a>
+                <a class="nav-item nav-link col-xs-12 col-md-3" id="nav-viewReim-tab" data-toggle="tab"
+                    href="#nav-viewReim" role="tab" aria-controls="nav-viewReim" aria-selected="false">View
+                    Reimbursements</a>
+                <a class="nav-item nav-link col-xs-12 col-md-3" id="nav-myProfile-tab" data-toggle="tab"
+                    href="#nav-myProfile" role="tab" aria-controls="nav-myProfile" aria-selected="false">My Profile</a>
+                <a class="nav-item nav-link col-xs-12 col-md-3" id="nav-signOut-tab" data-toggle="tab"
+                    href="#nav-signOut" role="tab" aria-controls="nav-signOut" aria-selected="false">Sign out</a>
+
+            </div>
+        </nav>
+    </div>
+
+    <div class="jumbotron">
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-submitReim" role="tabpanel"
+                aria-labelledby="nav-submitReim-tab">
+                <div class="container">
+                    <h3>Submit New Reimbursement Request</h3>
+                    <hr>
+                    <form action="reimbursements" method="POST">
+                        <label>Name:</label><br>
+                        <input type="text" id="submit-new-reim-name" name="name" class="form-control disabled-input" readonly="readonly">
+                        <br>
+                        <label>Date:</label><br>
+                        <input type="date" min="2019-08-18" max="2019-09-18" name="date" class="form-control" placeholder="date of purchase">
+                        <br>
+                        <label>Expense Type:</label>
+                        <select id="expense-type-select" name="expense-type" class="form-control" placeholder="get different expense types from server?">
+                            	<option value="1">Business Trip</option>
+                                <option value="2">Fundraiser</option>
+                                <option value="3">Advertising</option>
+                                <option value="4">Certification</option>
+                                <option value="5">Other</option>
+                        </select>
+                        <br>
+                        <label>Desc:</label><br>
+                        <textarea name="desc" maxlength="200" class="form-control"></textarea>
+                        <br>
+                        <label>Amount:</label><br>
+                        <input type="number" min="0.00" max="10000.00" step="0.01" name="number" class="form-control">
+                        <br>
+                        <label>Status:</label><br>
+                        <input type="text" name="status" class="form-control disabled-input" value="Pending" readonly="readonly">
+                        <br>
+                        <input type="submit" value="Submit" class="btn btn-primary float-right">
+                        <br>
+                    </form>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-viewReim" role="tabpanel" aria-labelledby="nav-viewReim-tab">
+                    <h3>View Previous Reimbursement Submissions</h3>
+                    <hr>
+                <div class="table-responsive">
+                    <table id="table-list-employee-previous-reimbursements" class="table table-sm display">
+                        <thead>
+                            <tr>
+                                <th>Reim_Id</th>
+                                <th>Submitted</th>
+                                <th>Employee</th>
+                                <th>Expense</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <!-- 	glyphicon glyphicon-user -->
+            <div class="tab-pane fade" id="nav-myProfile" role="tabpanel" aria-labelledby="nav-myProfile-tab">
+                <div class="container-fluid">
+                    <div class="row">
+        
+                        <img id="user-default-photo" class="col-xs-2 col-md-4 col-lg-4" src="static/Images/user.png">      
+                        
+                        <div class="col-xs-10 col-md-8 col-lg-8">
+                            <div class="table-responsive">
+                                <br>
+                                <table id="table-myProfile" class="table table-sm display">
+
+                                    <tbody>
+                                        <tr>
+                                            <td><b>Employee:</b></td>
+                                            <td id="table-employee-name"></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td><b>Username:</b></td>
+                                            <td id="table-username"></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td><b>Email:</b></td>
+                                            <td id="table-email"></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td><b>Department:</b></td>
+                                            <td id="table-department"></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td><b>Job Title:</b></td>
+                                            <td id="table-job-title"></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td><b>Manager:</b></td>
+                                            <td id="table-manager"></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td><b>Last Login:</b></td>
+                                            <td id="table-last-login"></td>
+
+                                        </tr>
+                                       
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <input type="button" id="edit-info-btn" value="Edit Info." class="btn  float-right">
+                        </div>
+
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-xs-2 col-md-4 col-lg-4">
+                            <input id="changeProfilePic" type="button" value="Change Profile Pic" class="btn btn-sm float-right">
+                        </div>
+                        <div class="col-xs-10 col-md-8 col-lg-8"> 
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-signOut" role="tabpanel" aria-labelledby="nav-signOut-tab">Please proceed to log out.<input type="button" id="logout-btn" value="Log Out" class="btn float-right"><br></div>
+        </div>
+    </div>
+    <div class="footer">
+        <hr />
+        Here lies my project one full stack application.
+        If you are reading this I must of survived this project.
+        Also, its almost my birthday. Carolyn is a great teacher. Howard is the man. I dont know if you realize this but
+        this entire footer is just bull crap to make my page look better than it really is. Have a problem? Well its not our fault.
+        Try refreshing the page, clearing your cache, restarting your computer, flash your PRAM. Just remember its your fault not ours.<span>&#9774;</span>
+        <div style="text-align:right">Copyright © Frederick Glaeser IV. 09/22/93</div>
+    </div>
+	
+	<script src="static/Scripts/populateEmployeePreviousReimbursements.js"></script>
+	<!-- <script src="static/Scripts/autopopulateSubmitReimbursement.js"></script>-->
+	 <script src="static/Scripts/toggleEditInfo.js"></script>
+	 <script src="static/Scripts/logout.js"></script>
+    <script src="static/Scripts/toggleProfilePic.js"></script> 
+</body>
+
+</html>

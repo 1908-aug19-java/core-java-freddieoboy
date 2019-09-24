@@ -1,0 +1,162 @@
+/*
+jumbo tron background color   color: #e9ecef;
+*/
+
+h1 {
+    font-family: "Segoe Script";
+    font-size: 200px !important;
+}
+
+#myh6 {
+    font-family: "Segoe Script";
+    font-size: 50px !important;
+    align: right !important;
+
+}
+
+body {
+    background-color: #C4C9CD !important;
+}
+
+.header {
+  
+    background-color: #5490CA !important;
+    padding: 20px 10px;
+    padding-bottom: 0px;
+    background-repeat: no-repeat;
+  
+  }
+body {
+    min-height: 100%;
+    padding: 0 0 50px;
+    position: relative;
+}
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    padding: 1rem;
+    text-align: center;
+}
+
+  .input-group-prepend span{
+    width: 50px;
+    color: black;
+    border:0 !important;
+    }
+    
+.login_btn {
+    --button-color: #5490CA;
+}
+        
+
+.login_btn:hover{
+    color: black !important;
+    background-color:black !important;
+}
+
+.btn {
+    
+    background-color: #5490CA !important;
+    border-color: #484A4C !important;
+    font-weight: bold !important;
+    color: white !important;
+}
+
+.btn:hover{
+    
+    background-color: #C4C9CD !important;
+    border-color: #484A4C !important;
+    font-weight: bold !important;
+    color: black !important;
+}
+  
+
+  /* border at bottom of tabs */
+.nav-tabs {
+    border:none; 
+}
+
+/* tab selected background color */
+
+
+.myCustomSize {
+max-width: 600px;
+}
+
+nav {
+    border: none !important;
+    padding:0;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs, a {
+    color: black !important;
+    font-weight: bold;
+    border: none !important;
+    border-color: none;
+}
+.nav-link:hover {
+    background-color: #C4C9CD;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: black !important;
+    font-weight: bold;
+    background-color: #e9ecef !important;
+    border-color: none;
+}
+fieldset {
+    border-width: 2px !important;
+    border: black !important;
+}
+
+input#reim_id_approve {
+    background-color: #568E66 !important;
+}
+
+input#reim_id_reject {
+    background-color: #B55D51 !important
+}
+
+input.approveBtn {
+	 background-color: #568E66 !important;
+}
+input.rejectBtn {
+	 background-color: #B55D51 !important;
+}
+input.approveBtn:hover {
+	 background-color: #568E66 !important;
+}
+input.rejectBtn:hover {
+	 background-color: #B55D51 !important;
+}
+/*
+img#user-default-photo {
+    
+    height: window.innerHeight / 2;
+    width: window.innerWidth/2;
+}
+*/
+h6 {
+font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1rem;
+}
+
+input#changeProfilePic {
+    background-color: #C4C9CD !important;
+    border-color: #484A4C !important;
+    font-weight: bold !important;
+    color: black !important;
+}
+
+input#changeProfilePic:hover {
+    background-color: #5490CA !important;
+    border-color: #484A4C !important;
+    font-weight: bold !important;
+    color: white !important;
+}
+
+
+ input.disabled-input{
+     font-weight: bold !important;
+ }
